@@ -8,4 +8,5 @@ public interface CoffeMashine {
     public String inStock(String ingredients);
 
     public boolean isBusy() throws InterruptedException;
+
 }
