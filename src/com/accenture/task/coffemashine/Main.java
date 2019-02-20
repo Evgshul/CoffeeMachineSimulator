@@ -1,44 +1,50 @@
 package com.accenture.task.coffemashine;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
-
-    public static final String COFFEE = "coffee";
-    public static final String HOT_WATER = "hot water";
-    public static final String MILK = "milk";
 
 
     public static void main(String[] args) {
         // write your code here
 
-        List<String> blackCoffeeRecipe = new ArrayList<>();
-        blackCoffeeRecipe.add(COFFEE);
-        blackCoffeeRecipe.add(HOT_WATER);
-
-
-        List<String> cappucino = new ArrayList<>();
-        cappucino.add(COFFEE);
-        cappucino.add(HOT_WATER);
-        cappucino.add(MILK);
-
-
-        List<String> latte = new ArrayList<>();
-        latte.add(COFFEE);
-        latte.add(HOT_WATER);
-        latte.add(MILK);
-
-        List<DrinkType> drinkType = new ArrayList<>();
-        drinkType.add(new DrinkType("Black coffee", 0.50, blackCoffeeRecipe));
-        drinkType.add(new DrinkType("Cappuccino", 1.00, cappucino));
-        drinkType.add(new DrinkType("Latte", 1.00, latte));
-
-        System.out.println("Chose coffee type:");
-
 
         DrinkOrder order = new DrinkOrder();
-        printdrinkType(drinkType);
+
+
+        System.out.println("Chose coffee type:");
+        printdrinkType(order.drinkTypes);
+        orderCoffee(order);
+    }
+
+    private static void orderCoffee(DrinkOrder order) {
+
+        Scanner read = new Scanner(System.in);
+        String coffeeType = read.next();
+
+        System.out.println("Enter the amount of money");
+        double money = read.nextDouble();
+
+        System.out.println("You order " + coffeeType + " and paid " + money);
+        DrinkOrder newOrder = null;
+        boolean doWeHavwCoffe = false;
+
+        for (DrinkType drinktype : order.drinkTypes) {
+            if (drinktype.getName().equals(coffeeType)) {
+                newOrder = new DrinkOrder(drinktype, drinktype.getName(), drinktype.getPrice(), 1);
+            }
+        }
+        if (doWeHavwCoffe == false) {
+            System.out.println("Sorry, no coffee for you");
+            System.out.println("Chose coffe type:");
+            orderCoffee(order);
+        } else {
+            order.validateOrder(newOrder);
+            order.make(newOrder);
+            System.out.println("Choose coffe type:");
+            orderCoffee(order);
+        }
 
     }
 
@@ -50,3 +56,5 @@ public class Main {
         }
     }
 }
+
+
