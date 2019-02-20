@@ -32,10 +32,10 @@ public class DrinkOrder implements CoffeMashine {
         latte.add(COFFEE);
         latte.add(HOT_WATER);
         latte.add(MILK);
-        List<DrinkType> drinkType = new ArrayList<>();
-        drinkType.add(new DrinkType("Black coffee", 0.50, blackCoffeeRecipe));
-        drinkType.add(new DrinkType("Cappuccino", 1.00, cappucino));
-        drinkType.add(new DrinkType("Latte", 1.00, latte));
+        drinkTypes = new ArrayList<>();
+        drinkTypes.add(new DrinkType("Black coffee", 0.50, blackCoffeeRecipe));
+        drinkTypes.add(new DrinkType("Cappuccino", 1.00, cappucino));
+        drinkTypes.add(new DrinkType("Latte", 1.00, latte));
     }
 
 

@@ -12,7 +12,6 @@ public class Main {
 
         DrinkOrder order = new DrinkOrder();
 
-
         System.out.println("Chose coffee type:");
         printdrinkType(order.drinkTypes);
         orderCoffee(order);
